@@ -20,8 +20,9 @@ SUFFIXES = {".yaml", ".yml", ".json", ".md"}
 SKIP_DIRS = {".git", "searchable", "tools", "unit_tests", "integration_tests", "sample_files"}
 SKIP_NAMES = {"acceptance-test-config.yml", "AGENTS.md", "CLAUDE.md", "CONTRIBUTING.md"}
 MAX_BYTES = 500_000  # generated catalogs above this just duplicate the schemas
-# The corpus skips files above ~256 KB, so larger sources are split into parts.
-PART_BYTES = 200_000
+# The corpus stores but does not search very long files (seen at ~3,000 lines),
+# so larger sources are split into parts of roughly 1,200 lines.
+PART_BYTES = 40_000
 # The corpus skips anything under a docs/ folder, so docs get a different prefix.
 RENAMED_DIRS = {"docs": "connector_docs"}
 
